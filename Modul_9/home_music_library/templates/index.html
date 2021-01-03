@@ -20,9 +20,9 @@
             <td>{{ song.band }}</td>
             <td>{{ song.genre }}</td>
             <td>
-                <a href="/index/{{ loop.index }}/delete">Delete</a>
+                <a href="/delete/{{ loop.index }}">Delete</a>
                 <br>
-                <a href="/index/{{ loop.index }}/update">Update</a>
+                <a href="/update/{{ loop.index }}">Update</a>
             </td>
         </tr>
         {% endfor %}

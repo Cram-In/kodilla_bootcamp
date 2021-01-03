@@ -16,7 +16,7 @@ class Songs:
         return self.songs[id]
 
     def create(self, data):
-        data.pop('csrf_token')
+        #data.pop('csrf_token')
         self.songs.append(data)
 
     def save_all(self):
