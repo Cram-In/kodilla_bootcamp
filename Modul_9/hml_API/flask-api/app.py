@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "nininini"
 
 
-@app.route("/api/v1/songs/all", methods=["GET"])
+@app.route("/api/v1/songs/", methods=["GET"])
 def songs_list_api():
     return jsonify(songs.all())
 
@@ -19,7 +19,7 @@ def get_song(song_id):
     return jsonify({"song": song})
 
 
-@app.route("/api/v1/songs/add/", methods=["POST"])
+@app.route("/api/v1/songs/", methods=["POST"])
 def add_song():
     if not request.json or not "title" in request.json:
         abort(400)
