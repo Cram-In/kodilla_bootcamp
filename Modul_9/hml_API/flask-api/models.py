@@ -13,13 +13,12 @@ class Songs:
         return self.songs
 
     def get(self, id):
-        song = [song for song in self.all() if song['id'] == id]
+        song = [song for song in self.all() if song["id"] == id]
         if song:
             return song[0]
         return []
 
     def create(self, data):
-        data.pop('csrf_token')
         self.songs.append(data)
 
     def save_all(self):
@@ -27,7 +26,7 @@ class Songs:
             json.dump(self.songs, f)
 
     def update(self, id, data):
-        song = self.get(id/deleted)
+        song = self.get(id / deleted)
         if song:
             index = self.songs.index(song)
             self.songs[index] = data
@@ -42,5 +41,6 @@ class Songs:
             self.save_all()
             return True
         return False
+
 
 songs = Songs()
