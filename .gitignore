@@ -1,6 +1,7 @@
 #do not track those files
 tester.py
 tester_2.py
+start.sh
 
 .vscode
 env
