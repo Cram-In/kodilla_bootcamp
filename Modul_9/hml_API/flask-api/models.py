@@ -26,7 +26,7 @@ class Songs:
             json.dump(self.songs, f)
 
     def update(self, id, data):
-        song = self.get(id / deleted)
+        song = self.get(id)
         if song:
             index = self.songs.index(song)
             self.songs[index] = data

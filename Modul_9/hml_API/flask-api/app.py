@@ -11,8 +11,9 @@ def songs_list_api():
     return jsonify(songs.all())
 
 
-@app.route("/api/v1/songs/<int:song_id>", methods=["GET"])
+@app.route("/api/v1/songs/<int:song_id>/", methods=["GET"])
 def get_song(song_id):
+    print("=====>", song_id)
     song = songs.get(song_id)
     if not song:
         abort(404)
@@ -23,6 +24,7 @@ def get_song(song_id):
 def add_song():
     if not request.json or not "title" in request.json:
         abort(400)
+    print(request.json)
     song = {
         "id": songs.all()[-1]["id"] + 1,
         "title": request.json.get("title"),
@@ -33,7 +35,7 @@ def add_song():
     return jsonify({"song": song}), 201
 
 
-@app.route("/api/v1/songs/<int:song_id>", methods=["DELETE"])
+@app.route("/api/v1/songs/<int:song_id>/", methods=["DELETE"])
 def delete_song(song_id):
     result = songs.delete(song_id)
     if not result:
@@ -41,9 +43,10 @@ def delete_song(song_id):
     return jsonify({"result": result})
 
 
-@app.route("/api/v1/songs/<int:song_id>", methods=["PUT"])
+@app.route("/api/v1/songs/<int:song_id>/", methods=["PUT"])
 def update_song(song_id):
     song = songs.get(song_id)
+    print(song)
     if not song:
         abort(404)
     if not request.json:
@@ -58,6 +61,7 @@ def update_song(song_id):
     ):
         abort(400)
     song = {
+        "id": song_id,
         "title": data.get("title", song["title"]),
         "band": data.get("band", song["band"]),
         "genre": data.get("genre", song["genre"]),

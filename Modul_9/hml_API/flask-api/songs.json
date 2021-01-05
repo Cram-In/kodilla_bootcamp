@@ -1,6 +1,1 @@
-[
-    {"id": 1, "title": "All Hope Is Gone", "band": "Slipknot", "genre": "Death Metal"}, 
-    {"id": 2, "title": "Erase Me", "band": "Make Them Suffer", "genre": "Metalcore"}, 
-    {"id": 3, "title": "Make Them Suffer", "band": "Cannibal Corpse", "genre": "Heavy Metal"}, 
-    {"id": 4, "title": "In Hell I'll Be In Good Company", "band": "The Dead South", "genre": "Bluegrass"}
-]
+[{"id": 1, "title": "All Hope Is Gone", "band": "Slipknot", "genre": "Death Metal"}, {"id": 2, "title": "Erase Me", "band": "Make Them Suffer", "genre": "Metalcore"}, {"id": 3, "title": "Make Them Suffer", "band": "Cannibal Corpse", "genre": "Heavy Metal"}, {"id": 4, "title": "song", "band": "band", "genre": "genre"}]
