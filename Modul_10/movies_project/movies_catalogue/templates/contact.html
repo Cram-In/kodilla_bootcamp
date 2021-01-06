@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block head %} <title>Contact</title> {% endblock %}
+
+{% block content %}
+<div class="contact">
+
+    <form>
+        <span>
+            Get in Touch
+        </span><br>
+        <input id="name" type="text" name="name" placeholder="Name">
+        <label for="name"></label><br>
+        <input id="email" type="text" name="email" placeholder="Email">
+        <label for="email"></label><br>
+        <input id="phone" type="text" name="phone" placeholder="Phone">
+        <label for="phone"></label><br>
+        <textarea name="message" placeholder="Your message..."></textarea><br>
+        <input id="ckb1" type="checkbox" name="copy-mail">
+        <label>Send copy to my-email</label><br>
+        <button>Send Email</button>
+
+    </form>
+</div>
+
+
+{% endblock %}
