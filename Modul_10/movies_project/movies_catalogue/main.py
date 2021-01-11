@@ -1,14 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from config import app
+import tmdb_client
+import random
 from model import Contacts, db
+import errors
 
 
-@app.route("/", methods=["GET"])
+@app.route("/")
 def homepage():
-    movies = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    # movies_list = movies  # full view
-    movies_list = movies[:4]  # restricted view
-    return render_template("homepage.html", movies=movies_list)
+    selected_list = request.args.get("list_type", "popular")
+    movies = tmdb_client.get_movies(how_many=8, list_type=selected_list)
+    random.shuffle(movies)
+    return render_template("homepage.html", movies=movies, current_list=selected_list)
 
 
 @app.route("/about/")
@@ -24,7 +27,6 @@ def get_services():
 @app.route("/contact/", methods=["POST", "GET"])
 def contact_us():
     if request.method == "POST":
-
         if (
             not request.form["name"]
             or not request.form["email"]
@@ -33,22 +35,41 @@ def contact_us():
         ):
             flash("Please enter all required data", "error")
         else:
-            new_message = Contacts(
+            message = Contacts(
                 request.form["name"], request.form["email"], request.form["phone"], request.form["message"]
             )
 
-            db.session.add(new_message)
+            db.session.add(message)
             db.session.commit()
             flash("Message successfully send.")
-            return render_template("/contact.html")
+            wait_time = 3000
+            seconds = wait_time / 1000
+            redirect_url = "http://localhost:5000/"
+            return f"<html><body><p>Message send. <br> You will be redirected to home page in { seconds } seconds</p><script>var timer = setTimeout(function() {{window.location='{ redirect_url }'}}, { wait_time });</script></body></html>"
     return render_template("/contact.html")
 
 
-@app.route("/<int:movie_id>/")
-def get_movie():
-    return "Hey!!! moving pictures"
+@app.route("/movie/<movie_id>")
+def movie_details(movie_id):
+    details = tmdb_client.get_single_movie(movie_id)
+    cast = tmdb_client.get_single_movie_cast(movie_id)
+    movie_images = tmdb_client.get_movie_images(movie_id)
+    selected_backdrop = random.choice(movie_images["backdrops"])
+    return render_template("movie_details.html", movie=details, cast=cast, selected_backdrop=selected_backdrop)
+
+
+@app.context_processor
+def utility_processor():
+    def tmdb_image_url(path, size):
+        return tmdb_client.get_poster_url(path, size)
+
+    return {"tmdb_image_url": tmdb_image_url}
+
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 
 if __name__ == "__main__":
-    db.create_all()
     app.run(debug=True)
