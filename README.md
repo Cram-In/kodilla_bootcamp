@@ -10,4 +10,5 @@ Modul_7 - Obiekty w Pythonie
 Modul_8 - Poznajemy Flask
 Modul_9 - Formularze i dane
 Modul_10 - Projekt webowy
-Modul_
+Modul_11 & 12 - Kontynuacja projektu webowego
+Modul_13 - Komunikacja z bazą danych (CRUD)
