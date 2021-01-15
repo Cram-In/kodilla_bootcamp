@@ -23,3 +23,7 @@ h10 {
 .buttons_main_page {
     margin-top: 1px;
 }
+
+.figure-img {
+    border-radius: 52px;
+}
