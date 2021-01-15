@@ -1,17 +1,6 @@
 import sqlite3
 
 
-# class Todos:
-#    """A sample Todos class"""
-#
-#    def __init__(self, title, description):
-#        self.title = title
-#        self.description = description
-#
-#    def __repr__(self):
-#        return "<Task %r>" % self.id
-
-
 def add_task(task):
     with conn:
         c.execute(

@@ -8,7 +8,7 @@
 
 <body>
     <h2> Change: </h2>
-    <form method="POST" action="/update/{{ song_id }}/">
+    <form method="POST" action="/update/{{ task_id }}/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}
