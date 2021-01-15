@@ -10,6 +10,9 @@ class Todos:
 
 
 # SQL def
+conn = sqlite3.connect("todo.db")
+
+
 def add_task(task):
     with conn:
         c.execute(

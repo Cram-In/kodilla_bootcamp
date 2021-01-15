@@ -1,21 +1,21 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from config import app
 from models import add_task, Todos
+import sqlite3
 
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/todo.html/", methods=["GET", "POST"])
 def songs_list():
     if request.method == "POST":
-        task = Todos(request.form["title"], request.form["description"])
-        print(task)
-        try:
-            add_task(task)
-            conn.close()
+        with sqlite3.connect("todo.db") as conn:
+            id = 1
+            title = request.form["title"]
+            description = request.form["description"]
+            c = conn.cursor()
+            c.execute("INSERT INTO todo VALUES (?, ?, ?)", (id, title, description))
+            conn.commit()
             return redirect("/")
-        except Exception as e:
-            print(e)
-
     else:
         return render_template("todo.html")
 
