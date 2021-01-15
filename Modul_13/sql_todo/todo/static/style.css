@@ -1,0 +1,35 @@
+html {
+    height: 100%;
+}
+table, th, td {
+    border: 1px solid black;
+    margin-left:auto; 
+    margin-right:auto;
+    
+}
+body {
+    text-align: center;
+}
+.song_list {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.add_song {
+    padding: 25px;
+    font-size: 12px;
+}
+.footer {
+    padding: 20px;
+    font-size: 5px;
+    font-style: italic;
+}
+h1 {
+    font-size: 25px;
+}
+h2 {
+    margin-bottom: 4px;
+}
+h3 {
+    font-size: 10px;
+}
