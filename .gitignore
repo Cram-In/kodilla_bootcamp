@@ -9,26 +9,20 @@ __pycache__
 
 
 # ignore that path
-#1
 Modul_8/Project_0
-#2
 Modul_8/Project_1
-#3
 Modul_8/flask_intro
-#4
 Modul_8/app
-#5
+#
 PycharmProjects/Kodilla/Test
-#6
+#
 Modul_10/movies_project/movies_env
-#7
+#
 Modul_13/todos_env
-#8
 Modul_13/SQLite_practice
-#9
 Modul_13/TodosSQLite
-#10
 Modul_13/sql_todo/todo_env/
+Modul_13/mikroblog/venv
 
 
 
