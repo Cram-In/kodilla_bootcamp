@@ -1,16 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from config import app
-from models import add_task
+from models import add_task, Todos
 
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/todo.html/", methods=["GET", "POST"])
 def songs_list():
     if request.method == "POST":
-        task = {"task": request.form["title"], "task": request.form["description"]}
-
+        task = Todos(request.form["title"], request.form["description"])
+        print(task)
         try:
-            c = conn.cursor()
             add_task(task)
             conn.close()
             return redirect("/")
