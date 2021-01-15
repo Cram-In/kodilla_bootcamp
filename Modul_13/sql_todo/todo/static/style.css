@@ -10,26 +10,16 @@ table, th, td {
 body {
     text-align: center;
 }
-.song_list {
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.add_song {
-    padding: 25px;
-    font-size: 12px;
-}
-.footer {
-    padding: 20px;
-    font-size: 5px;
-    font-style: italic;
-}
 h1 {
     font-size: 25px;
+    text-align: center;
+    padding-bottom: 10px;
 }
 h2 {
-    margin-bottom: 4px;
+    text-align: center;
+    font-size: 15px;
 }
-h3 {
-    font-size: 10px;
+form {
+    padding: 20px;
+    margin: 10px;
 }

@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Tu dodajemy nowe piosenki i widzimy ich listę</title>
+<title>ToDo List with use og SQLite db</title>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Task Master</h1>
-    {% if tasks|length < 1 %} <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+    <h1>Your ToDo List</h1>
+    {% if tasks|length < 1 %} <h2>There are no tasks in your list. Create one below!</h2>
         {% else %}
         <table>
             <tr>
