@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block head %} <title>Book Shelf</title> {% endblock %}
+
+{% block content %}
+All Books
+<div class="label">
+    <h1> Book Library 2.0</h1>
+
+
+    <div class="book_addind">
+        <form action="/book" method="post">
+            <p><label for="title">Book Title</label></p>
+            <p><input type="text" name="title"></p>
+            <p><label for="title">Book Genre</label></p>
+            <p><input type="text" name="genre"></p>
+            <p><label for="title">Book Pages</label></p>
+            <p><input type="text" name="pages"></p>
+            <input type="submit" value="Add book">
+        </form>
+    </div>
+    <div class="author_adding">
+        <form action="/author" method="post">
+            <p><label for="name">Authors Name</label></p>
+            <p><input type="text" name="name"></p>
+            <p><label for="surname">Authors Surname</label></p>
+            <p><input type="text" name="surname"></p>
+            <p><label for="birth">Authors B-day</label></p>
+            <p><input type="text" name="birth"></p>
+            <input type="submit" value="Add author">
+        </form>
+    </div>
+
+
+    <ol>
+        {% for book in books %}
+        <li>
+            {% if book.done %} <strike> {% endif %}{{ book.content }} {% if book.done %} </strike>{% endif %}
+            <a href="/done/{{ book.id }}">Done</a>
+            <a href="/delete/{{ book.id }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+
+<form>
+    <input type="radio" id="all" name="stock" value="all" onclick="location.href=\'books.html\'">
+    <label for="all">All Books</label><br>
+    <input type="radio" id="in" name="stock" value="in" onclick="location.href=\'books_in.html\'">
+    <label for="in">Books in library</label><br>
+    <input type="radio" id="out" name="stock" value="out" onclick="location.href=\'books_out.html\'">
+    <label for="out">Books out</label>
+</form>
+
+{% endblock %}
