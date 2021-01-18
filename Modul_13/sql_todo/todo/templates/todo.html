@@ -9,7 +9,7 @@
     <h1>Your ToDo List</h1>
     {% if tasks|length < 1 %} <h2>There are no tasks in your list. Create one below!</h2>
         {% else %}
-        <table>
+        <table class="task_list">
             <tr>
                 <th>Task</th>
                 <th>Added</th>
@@ -30,6 +30,7 @@
         {% endif %}
 
         <div class="form">
+            <h3>Create New Task</h3>
             <form action="/" method="POST">
                 <label for="title">Task Title:</label><br>
                 <input type="text" name="title" id="title"><br>

@@ -27,7 +27,7 @@ def all_tasks():
             return render_template("todo.html", tasks=tasks)
 
 
-@app.route("/delete/<int:task_id>")
+@app.route("/delete/<int:task_id>", methods=["DELETE"])
 def delete_task(task_id):
     with sqlite3.connect("todo.db") as conn:
         c = conn.cursor()
