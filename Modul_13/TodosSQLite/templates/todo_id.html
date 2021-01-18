@@ -5,20 +5,36 @@
 {% block body %}
 
 <div class="container">
-    <h2> Zmień: </h2>
-    <form method="POST" action="/todo_id/{{ task_id }}/">
-        <table class="update_task">
-
+    <div class="old_task">
+        <h1>Old Task</h1>
+        <table class="tasks_list">
+            <thead>
+                <th>Tytuł</th>
+                <th>Opis</th>
+            </thead>
+            {% for todo in todos %}
             <tr>
-                <th><label name="title">Taks Title</label></th>
-                <th><input type="text" name="title" id="title"></th>
+                <td>{{ todo[1] }}</a></td>
+                <td>{{ todo[2] }}</td>
             </tr>
-            <tr>
-                <th><label name="description">Taks Description</label></th>
-                <th><input type="text" name="description" id="description"></th>
-            </tr>
+            {% endfor %}
         </table>
-        <input type="submit" value="Go">
-    </form>
+    </div>
+    <div class="update">
+        <h2> Update: </h2>
+        <form method="POST" action="/new/">
+            <table class="update_task">
+                <tr>
+                    <th><label name="title">Taks Title</label></th>
+                    <th><input type="text" name="title" id="title" placeholder=""></th>
+                </tr>
+                <tr>
+                    <th><label name="description">Taks Description</label></th>
+                    <th><input type="text" name="description" id="description"></th>
+                </tr>
+            </table>
+            <input type="submit" value="Go">
+        </form>
+    </div>
 </div>
 {% endblock %}
