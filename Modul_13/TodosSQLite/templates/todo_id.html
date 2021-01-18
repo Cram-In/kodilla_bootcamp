@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block head %}<title>Szczegóły todo</title>{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2> Zmień: </h2>
+    <form method="POST" action="/todo_id/{{ task_id }}/">
+        <table class="update_task">
+
+            <tr>
+                <th><label name="title">Taks Title</label></th>
+                <th><input type="text" name="title" id="title"></th>
+            </tr>
+            <tr>
+                <th><label name="description">Taks Description</label></th>
+                <th><input type="text" name="description" id="description"></th>
+            </tr>
+        </table>
+        <input type="submit" value="Go">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+}
+table, th, tr, td {
+            border: 1px solid black;
+            margin-left:auto; 
+            margin-right:auto;
+}
+
+body {
+    background-color: blanchedalmond;
+    text-align: center;
+}
+
+.tasks_list {
+    text-align: center;
+    font-size: 16px;
+}
+
+.new_task {
+    font-size: 13px;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 16px;
+}

@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block head %} <title>Tu tworzymy todo i widzimy listę</title> {% endblock %}
+
+
+{% block body %}
+
+<h1>Lista zadań</h1>
+
+<table class="tasks_list">
+    <thead>
+        <th>Tytuł</th>
+        <th>Opis</th>
+        <th>Czy zrobione?</th>
+    </thead>
+    {% for todo in todos %}
+    <tr>
+        <td>{{ todo[1] }}</a></td>
+        <td>{{ todo[2] }}</td>
+        <td>
+            <a href="/delete/{{ todo[0] }}">Delete</a>
+            <br>
+            <a href="/update/{{ todo[0] }}">Update</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div>
+    <h2> Dodaj nowe zadanie: </h2>
+    <form method="POST" action="/new/">
+        <table class="new_task">
+
+            <tr>
+                <th><label name="title">Taks Title</label></th>
+                <th><input type="text" name="title" id="title"></th>
+            </tr>
+            <tr>
+                <th><label name="description">Taks Description</label></th>
+                <th><input type="text" name="description" id="description"></th>
+            </tr>
+        </table>
+        <input type="submit" value="Add Task">
+    </form>
+</div>
+
+{% endblock %}
