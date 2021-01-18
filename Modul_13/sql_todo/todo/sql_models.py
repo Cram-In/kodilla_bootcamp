@@ -13,5 +13,3 @@ c.execute(
     PRIMARY KEY (task_id)
 )"""
 )
-
-conn.close()

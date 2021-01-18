@@ -27,15 +27,13 @@ def all_tasks():
             return render_template("todo.html", tasks=tasks)
 
 
-@app.route("/delete/{{task[0]}}")
+@app.route("/delete/<int:task_id>")
 def delete_task(task_id):
-    task_id = task[0]
-    print("==================>", task_id)
     with sqlite3.connect("todo.db") as conn:
         c = conn.cursor()
-        c.execute("DELETE from todo WHERE (?)", (task_id))
+        c.execute("SELECT * FROM todo")
         tasks = c.fetchall()
-        return redirect("/")
+        print(tasks)
 
 
 @app.route("/update/<int:task_id>/", methods=["GET", "POST"])
