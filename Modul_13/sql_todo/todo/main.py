@@ -48,16 +48,19 @@ def update_task(task_id):
         c.execute("SELECT * FROM todo")
         tasks = c.fetchall()
         print(task_id)
-        return render_template("/todo_id.html/")
+        return render_template("todo_id.html")
         title = request.form["title"]
         description = request.form["description"]
+        print(title)
+        print(description)
+        print(task_id)
         c.execute(
-            """UPDATE todo SET description = :description
-                    WHERE title = :title""",
-            {"title": task.title, "description": task.description},
+            """UPDATE todo SET title = title, description = description
+                    WHERE task_id = taks_id""",
+            {"title": title, "description": description},
         )
         conn.commit()
-        return render_template("todo.html", tasks=tasks)
+    return render_template("todo.html", task_id=task_id)
 
 
 if __name__ == "__main__":
