@@ -41,9 +41,23 @@ def delete_task(task_id):
         return redirect("/")
 
 
-@app.route("/update/<int:task_id>/", methods=["GET", "POST"])
+@app.route("/update/<string:task_id>/", methods=["GET", "POST"])
 def update_task(task_id):
-    pass
+    with sqlite3.connect("todo.db") as conn:
+        c = conn.cursor()
+        c.execute("SELECT * FROM todo")
+        tasks = c.fetchall()
+        print(task_id)
+        return render_template("/todo_id.html/")
+        title = request.form["title"]
+        description = request.form["description"]
+        c.execute(
+            """UPDATE todo SET description = :description
+                    WHERE title = :title""",
+            {"title": task.title, "description": task.description},
+        )
+        conn.commit()
+        return render_template("todo.html", tasks=tasks)
 
 
 if __name__ == "__main__":
