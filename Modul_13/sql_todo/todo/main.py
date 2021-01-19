@@ -41,32 +41,34 @@ def delete_task(task_id):
         return redirect("/")
 
 
-@app.route("/update/<string:task_id>/", methods=["GET", "POST"])
+@app.route("/update/<task_id>/", methods=["GET", "POST"])
 def update_task(task_id):
-    print(type(task_id))
-    print(task_id)
+    print("def task_id ===>", task_id)
     if request.method == "POST":
         with sqlite3.connect("todo.db") as conn:
             title = request.form["title"]
             description = request.form["description"]
             c = conn.cursor()
+            print("with task_id ====>", task_id)
+            print("with title ====>", title)
+            print("with description ====>", description)
             try:
                 c.execute(
-                    """UPDATE todo SET title = title, description = description
-                        WHERE task_id = taks_id""",
-                    {"title": title, "description": description},
+                    """UPDATE todo SET title = :title, description = :description
+                        WHERE task_id = :task_id""",
+                    {"title": title, "description": description, "task_id": task_id},
                 )
                 conn.commit()
                 return redirect("/")
-            except:
-                return "There was an issue updating your task"
+            except Exception as e:
+                print(f"Exception raised: {e}")
 
     else:
         with sqlite3.connect("todo.db") as conn:
             c = conn.cursor()
             c.execute("SELECT * FROM todo")
             tasks = c.fetchall()
-        return render_template("todo_id.html", tasks=tasks)
+        return render_template("todo_id.html/", tasks=tasks, task_id=task_id)
 
 
 if __name__ == "__main__":
