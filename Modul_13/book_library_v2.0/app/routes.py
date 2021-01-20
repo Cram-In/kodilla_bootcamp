@@ -5,8 +5,8 @@ from app.models import Author, Book
 
 @app.route("/")
 def book_list():
-    # books = Book.query.all()
-    return render_template("books.html")  # , books=books)
+    books = Book.query.all()
+    return render_template("books.html", books=books)
 
 
 @app.route("/book", methods=["POST"])
