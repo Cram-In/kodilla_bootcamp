@@ -6,7 +6,6 @@ bookshelf = db.Table(
     db.Model.metadata,
     db.Column("author_id", db.Integer, db.ForeignKey("authors.author_id")),
     db.Column("book_id", db.Integer, db.ForeignKey("books.book_id")),
-    db.Column("stock", db.Integer, db.ForeignKey("books.stock")),
 )
 
 
@@ -18,7 +17,7 @@ class Author(db.Model):
     birth = db.Column(db.String(15), index=True, nullable=True)
     books = db.relationship("Book", secondary=bookshelf, lazy="dynamic")
 
-    def __str__(self):
+    def __repr__(self):
         return f"<Author: {self.name} {self.surname}>"
 
 
@@ -30,7 +29,7 @@ class Book(db.Model):
     pages = db.Column(db.Integer, index=True, nullable=True)
     stock = db.Column(db.Boolean, default=False)
 
-    def __str__(self):
+    def __repr__(self):
         return f"<Book: '{self.title}'. On shelf: {self.stock}>"
 
 

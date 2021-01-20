@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect
 from app import app, db
-from app.models import Author
+from app.models import Author, Book
 
 
 @app.route("/")
@@ -21,7 +21,7 @@ def add_book():
     return redirect("/")
 
 
-@app.route("/author", methods=["POST"])
+@app.route("/author?", methods=["POST"])
 def add_author():
     content = request.form["content"]
     if not content:
@@ -33,27 +33,49 @@ def add_author():
     return redirect("/")
 
 
-@app.route("/delete/<int:task_id>")
-def delete_task(task_id):
-    task = Task.query.get(task_id)
-    if not task:
+@app.route("/assign/")
+def assign_book(author_id):  # assign book to author
+    pass
+
+
+@app.route("/delete/<int:book_id>")
+def delete_book(book_id):
+    pass
+    """
+    book = Book.query.get(book_id)
+    if not book:
         return redirect("/")
 
-    db.session.delete(task)
+    db.session.delete(book)
     db.session.commit()
     return redirect("/")
+    """
 
 
-@app.route("/done/<int:task_id>")
-def resolve_task(task_id):
-    task = Task.query.get(task_id)
-
-    if not task:
+@app.route("/delete/<int:author_id>")
+def delete_author(author_id):
+    pass
+    """
+    author = Author.query.get(author_id)
+    if not author:
         return redirect("/")
-    if task.done:
-        task.done = False
+
+    db.session.delete(author)
+    db.session.commit()
+    return redirect("/")
+    """
+
+
+@app.route("/stock/<int:book_id>")
+def books_stock_control(book_id):
+    book = Book.query.get(book_id)
+
+    if not book:
+        return redirect("/")
+    if Book.done:
+        Book.done = False
     else:
-        task.done = True
+        Book.done = True
 
     db.session.commit()
     return redirect("/")

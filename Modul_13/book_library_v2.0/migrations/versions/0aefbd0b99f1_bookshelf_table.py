@@ -1,8 +1,8 @@
 """bookshelf table
 
-Revision ID: 606d6803aa0d
+Revision ID: 0aefbd0b99f1
 Revises: 
-Create Date: 2021-01-17 00:19:29.052945
+Create Date: 2021-01-19 16:00:29.901493
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '606d6803aa0d'
+revision = '0aefbd0b99f1'
 down_revision = None
 branch_labels = None
 depends_on = None
