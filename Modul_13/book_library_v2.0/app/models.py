@@ -18,7 +18,7 @@ class Author(db.Model):
     books = db.relationship("Book", secondary=bookshelf, lazy="dynamic")
 
     def __repr__(self):
-        return f"<Author: {self.name} {self.surname}>"
+        return f"{self.name} {self.surname}"
 
 
 class Book(db.Model):
@@ -29,8 +29,11 @@ class Book(db.Model):
     pages = db.Column(db.Integer, index=True, nullable=True)
     stock = db.Column(db.Boolean, default=False)
 
+    def __str__(self):
+        return f"Book: '{self.title}'. On shelf: {self.stock} "
+
     def __repr__(self):
-        return f"<Book: '{self.title}'. On shelf: {self.stock}>"
+        return f"Stock: {self.stock}"
 
 
 # a = Author()
