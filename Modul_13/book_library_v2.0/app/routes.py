@@ -38,9 +38,17 @@ def add_author():
     return redirect("/")
 
 
-@app.route("/assign/")
-def assign_book(book_id):  # assign book to author
-    pass
+@app.route("/assign/", methods=["POST"])
+def assign_book():  # assign book to author
+    book_id = request.form["books_id"]
+    author_id = request.form["author_id"]
+
+    book = Book.query.get(book_id)
+    book.author_id = author_id
+
+    db.session.add(book)
+    db.session.commit()
+    return redirect("/")
 
 
 @app.route("/delete/<int:book_id>")
