@@ -10,7 +10,7 @@ def book_list():
     return render_template("books.html", books=books, authors=authors)
 
 
-@app.route("/book", methods=["POST"])
+@app.route("/book/", methods=["POST"])
 def add_book():
     title = request.form["title"]
     genre = request.form["genre"]
@@ -24,7 +24,7 @@ def add_book():
     return redirect("/")
 
 
-@app.route("/author?", methods=["POST"])
+@app.route("/author/", methods=["POST"])
 def add_author():
     name = request.form["name"]
     surname = request.form["surname"]
@@ -32,7 +32,7 @@ def add_author():
     if not name:
         return "Error"
 
-    author = Book(name=name, surnam=surnam, birth=birth)
+    author = Author(name=name, surname=surname, birth=birth)
     db.session.add(author)
     db.session.commit()
     return redirect("/")
