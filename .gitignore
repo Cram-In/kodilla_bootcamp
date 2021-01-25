@@ -6,6 +6,7 @@ start.sh
 .vscode
 env
 __pycache__
+.ipynb_checkpoints
 
 
 # ignore that path
