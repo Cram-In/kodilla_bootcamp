@@ -10,6 +10,6 @@ def test_movies_list(monkeypatch, list_type):
     monkeypatch.setattr("tmdb_client.call_tmdb_api", api_mock)
 
     with app.test_client() as client:
-        response = client.get("/movie/<movie_id>")
+        response = client.get(f"movie/{list_type}")
         assert response.status_code == 200
         api_mock.assert_called_once_with("movie/{list_type}")
