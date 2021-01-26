@@ -41,8 +41,6 @@ def get_single_movie_cast(movie_id):
     endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
     headers = {"Authorization": f"Bearer {API_TOKEN}"}
     response = requests.get(endpoint, headers=headers)
-    print(json.dumps(response.json(), indent=4))
-    print(response.json()["cast"])
     return response.json()["cast"]
 
 
