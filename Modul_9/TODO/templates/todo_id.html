@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Szczegóły todo</title>
+    <title>Task Details</title>
+    <style>
+        table, th, tr, td {border: 1px solid black;margin-left:auto;margin-right:auto;}
+        body {text-align: center;}
+    </style>
 </head>
 <body>
-    <h2> Zmień: </h2>
+    <h2> Tasks Updates: </h2>
     <form method="POST" action="/todos/{{ todo_id }}/">
         {{ form.hidden_tag() }}
         <table>

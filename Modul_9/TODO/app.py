@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, abort
 from forms import TodoForm
 from models import todos
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "nininini"
+app.config["SECRET_KEY"] = "my_secret_key"
+
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/todos/", methods=["GET", "POST"])
@@ -26,9 +27,19 @@ def todo_details(todo_id):
 
     if request.method == "POST":
         if form.validate_on_submit():
-            todos.update(tod_id - 1, form.data)
+            todos.update(todo_id - 1, form.data)
         return redirect(url_for("todos_list"))
-    return render_template("todo.html", form=form, todo_id=todo_id)
+    return render_template("todo_id.html", form=form, todo_id=todo_id)
+
+
+@app.route("/delete/<int:todo_id>/", methods=["GET", "DELETE"])
+def delete_todo(todo_id):
+    todo = todos.delete(todo_id - 1)
+    todos.save_all()
+    if not todo:
+        abort(404)
+
+    return redirect(url_for("todos_list"))
 
 
 if __name__ == "__main__":
