@@ -2,34 +2,9 @@
 tester.py
 tester_2.py
 start.sh
+start-api.sh
 
 .vscode
 env
 __pycache__
 .ipynb_checkpoints
-
-
-# ignore that path
-Modul_8/Project_0
-Modul_8/Project_1
-Modul_8/flask_intro
-Modul_8/app
-#
-PycharmProjects/Kodilla/Test
-#
-Modul_10/movies_project/movies_env
-#
-Modul_13/todos_env
-Modul_13/SQLite_practice
-#Modul_13/TodosSQLite
-Modul_13/sql_todo/todo_env/
-Modul_13/mikroblog/venv
-
-
-
-adventofcode/
-html/
-projekt_magazyn/
-trash/
-AkademiaKodu/
-Test/
